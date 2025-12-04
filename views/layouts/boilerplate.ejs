@@ -29,13 +29,15 @@
                 <script>
                     const slider = document.getElementById("rating");
 
-                    slider.addEventListener("input", function () {
-                        const value = (this.value - 1) * 25;
-                        this.style.background = `linear-gradient(90deg, gold 0%, gold ${value}%, #ddd ${value}%, #ddd 100%)`;
-                    });
+                    if (slider) {
+                        slider.addEventListener("input", function () {
+                            const value = (this.value - 1) * 25;
+                            this.style.background = `linear-gradient(90deg, gold 0%, gold ${value}%, #ddd ${value}%, #ddd 100%)`;
+                        });
 
-                    // initialize correct color
-                    slider.dispatchEvent(new Event("input"));
+                        // initialize correct color
+                        slider.dispatchEvent(new Event("input"));
+                    }
                 </script>
 
 </body>

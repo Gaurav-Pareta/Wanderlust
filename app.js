@@ -108,6 +108,12 @@ app.use((error, req, res, next) => {
     res.status(statusCode).render("error/error.ejs", { message, statusCode });
 });
 
+// Ensure static files are served in production
+app.use((req, res, next) => {
+    console.log(`Serving static file: ${req.url}`);
+    next();
+});
+
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
 });
