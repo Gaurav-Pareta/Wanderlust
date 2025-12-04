@@ -108,11 +108,23 @@ app.use((error, req, res, next) => {
     res.status(statusCode).render("error/error.ejs", { message, statusCode });
 });
 
+// Middleware to log static file requests
+app.use((req, res, next) => {
+    if (req.url.startsWith('/css') || req.url.startsWith('/js')) {
+        console.log(`Static file requested: ${req.url}`);
+    }
+    next();
+});
+
 // Ensure static files are served in production
 app.use((req, res, next) => {
     console.log(`Serving static file: ${req.url}`);
     next();
 });
+
+// Explicitly serve static files from the public folder
+app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
+app.use('/js', express.static(path.join(__dirname, 'public', 'js')));
 
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
