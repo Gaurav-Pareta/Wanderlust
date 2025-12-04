@@ -1,0 +1,466 @@
+/* General Layout */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    flex: 1;
+    padding: 0 1rem;
+}
+
+/* Footer */
+.f-info {
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    gap: 1rem;
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222;
+    margin: 0 0.5rem;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info-socials,
+.f-info-links {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.f-info-socials i {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+/* Cards */
+.card {
+    border: none !important;
+    margin-bottom: 2rem !important;
+    cursor: pointer;
+    transition: all 0.3s ease !important;
+}
+
+.card:hover {
+    border-radius: 1rem !important;
+    transform: scale(1.03);
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+}
+
+.listing_link {
+    text-decoration: none;
+}
+
+/* Buttons */
+.new-listing-btn,
+.edit-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    transition: background 0.2s ease;
+}
+
+.new-listing-btn:hover,
+.edit-btn:hover {
+    background-color: #e33a42 !important;
+}
+
+/* Show Page */
+.show-img {
+    width: 100%;
+    max-width: 20rem;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+.show-card {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    gap: 1rem;
+}
+
+.show-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.show-card-body p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.show-card-body h5 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.show-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.show-btns button a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .show-card {
+        flex-direction: row;
+        margin-left: 3rem;
+    }
+
+    .show-card-body p {
+        width: 30rem !important;
+        font-size: 1.2rem;
+    }
+
+    .show-card-body h5 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Stars */
+.star {
+    height: 1.2rem;
+    width: 1.2rem;
+    object-fit: contain;
+    margin-right: 0.2rem;
+}
+
+/* Review Card */
+.review-card-body {
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-card-body:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Review text */
+.review-card-body p {
+    margin: 0.5rem 0 0 0;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #333;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .review-card-body {
+        padding: 1.5rem;
+    }
+    .star {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+}
+
+.navbar{
+    height: 4.8rem;
+}
+
+.airbnb-navbar {
+    background: white;
+    padding: 12px 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+/* Logo Icon */
+.navbar-brand i {
+    color: #ff385c;
+    font-size: 1.6rem;
+}
+
+/* Nav Links */
+.navbar-nav .nav-link {
+    font-weight: 500;
+    margin-right: 15px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.navbar-nav .nav-link:hover {
+    color: #ff385c;
+    text-decoration: underline #ff385c;
+}
+
+
+/* Login Button */
+.airbnb-login {
+    background: #ffffff;
+    color: #ff385c;
+    border: 1.5px solid #ff385c;
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.airbnb-login:hover {
+    background: #fff1f3;
+}
+
+/* Signup Button */
+.airbnb-signup {
+    background: linear-gradient(90deg, #ff385c, #ff5a5f);
+    color: white;
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-weight: 600;
+    border: none;
+    transition: 0.3s ease;
+}
+
+.airbnb-signup:hover {
+    transform: scale(1.05) !;
+    box-shadow: 0 6px 15px rgba(255, 56, 92, 0.3);
+}
+
+/* Logout Button */
+.airbnb-logout {
+    background: #f7f7f7;
+    color: #333;
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.airbnb-logout:hover {
+    background: #ff385c;
+    color: white;
+}
+.signup-alt{
+    color: #333;
+}
+
+/* ===== MOBILE NAV FIX ===== */
+@media (max-width: 768px) {
+
+  .navbar-collapse {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  }
+
+  .navbar-nav .nav-link {
+    padding: 10px 0;
+    font-size: 1.05rem;
+  }
+
+  .airbnb-login,
+  .airbnb-signup,
+  .airbnb-logout {
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+}
+
+.allListings{
+    margin-top: 2rem !important;
+}
+
+/* Search */
+
+.search-btn{
+    height: 2rem !important;
+    background-color: #fe424d !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 25px !important;
+    display: flex !important;
+    width: 7rem !important;
+    justify-content: center !important;
+    align-items: center !important;
+    transition: all 0.3 ease 0;
+}
+
+.search-btn:hover{
+    transform: scale(1.03);
+}
+
+.search-btn i{
+    height: 0.8rem !important;
+    margin-right: 0.2rem;
+}
+
+.search-input{
+    width: 20rem !important;
+    border-radius: 25px !important;
+    padding: 0.5rem 1.5rem !important;
+}
+
+
+/* ---------------- HIDE SEARCH BAR ON MOBILE ---------------- */
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+}
+
+/* MOBILE COLLAPSE MENU FIX  */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background: white !important;
+        padding: 12px 18px;
+        border-radius: 15px;
+        margin-top: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 8px 0 !important;
+        font-size: 1.1rem;
+    }
+
+
+    .navbar-collapse.collapse.show {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+}
+
+.navbar-toggler {
+    border: 2px solid #555 !important;
+    padding: 5px 8px !important;
+    border-radius: 8px !important;
+}
+
+.navbar-toggler-icon {
+    filter: invert(30%);
+}
+
+/* Review Card */
+.review-card-body {
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: 0.2s ease;
+}
+
+.review-card-body:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Review comment text */
+.review-card-body p {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+/* Stars */
+.star {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+/* Rating slider */
+#rating {
+    width: 100%;
+}
+
+/* Responsive improvements */
+@media (max-width: 576px) {
+    .review-card-body {
+        padding: 1rem;
+    }
+    .star {
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .star {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+}
+
+/* RANGE SLIDER STYLING */
+#rating {
+    width: 100%;
+    appearance: none;
+    height: 8px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, gold 0%, gold 0%, #ddd 0%, #ddd 100%);
+    outline: none;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Slider Thumb */
+#rating::-webkit-slider-thumb {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    background: gold;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #b58900;
+    transition: 0.3s;
+}
+
+#rating::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+/* Firefox Thumb */
+#rating::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    background: gold;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #b58900;
+}
+
+/* Firefox Track */
+#rating::-moz-range-track {
+    background: #ddd;
+    height: 8px;
+    border-radius: 5px;
+}

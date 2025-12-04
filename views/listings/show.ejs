@@ -1,0 +1,85 @@
+<% layout("/layouts/boilerplate") -%>
+
+
+    <h1>Listing Detail:</h1>
+    <div class="show-card" style="width: 18rem;">
+        <img src="<%= listing.image.url %>" class="show-img" alt="Listing Image">
+        <div class="show-card-body">
+            <h5>
+                <%= listing.title %>
+            </h5>
+            <p>Owned By: <i>
+                    <%= listing.owner.username %>
+                </i></p>
+            <p>
+                <%= listing.description %>
+            </p>
+            <p>
+                &#x20B9;<%= listing.price.toLocaleString("en-IN") %>
+            </p>
+            <p>
+                <%= listing.location %>
+            </p>
+            <p>
+                <%= listing.country %>
+            </p>
+            <% if(currUser && currUser._id.equals(listing.owner._id)) {%>
+                <div class="show-btns">
+                    <button class="btn edit-btn"><a href="/listings/<%= listing._id %>/edit">Edit this
+                            Route</a></button>
+                    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+                        <button class="btn btn-dark">Delete this listing</button>
+                    </form>
+                </div>
+                <% } %>
+        </div>
+    </div>
+    <% if(currUser) { %>
+        <hr>
+        <div class="review">
+            <h3>Leave a Review</h3>
+            <form action="/listings/<%= listing._id %>/reviews" method="POST" novalidate class="needs-validation">
+                <div class="mb-3 mt-3">
+                    <label for="rating" class="form-lable" style="font-size:x-large;">Rating</label>
+                    <input type="range" name="review[rating]" id="rating" min="1" max="5">
+                </div><br>
+                <div class="mb-3 mt-3">
+                    <label for="comment" class="form-lable" style="font-size:x-large;">Comments</label>
+                    <textarea name="review[comment]" rows="5" cols="70" placeholder="Enter your review" id="comment"
+                        class="form-control" required></textarea>
+                    <div class="invalid-feedback">This field is required.</div>
+                </div><br>
+                <button class="btn btn-outline-dark">Submit</button>
+            </form>
+        </div>
+        <% } %>
+            <hr>
+            <h3>All Reviews</h3>
+
+            <div class="row g-3">
+                <% for (review of listing.reviews) { %>
+                    <div class="col-12 col-md-6">
+                        <div class="review-card-body">
+                            <h5 class="card-title mb-2">
+                                <%= review.author.username %>
+                            </h5>
+                            <p class="card-text mb-1">
+                                <%= review.comment %>
+                            </p>
+
+                            <div class="rating-stars mb-2">
+                                <span>Rating: </span>
+                                <% for (let i=0; i < review.rating; i++) { %>
+                                    <img class="star"
+                                        src="https://img.freepik.com/free-vector/star-glossy-yellow-colors-3d-cute-smooth-star-shape-realistic-vector-illustration-isolated-white-background_145391-1342.jpg?semt=ais_hybrid&w=740&q=80">
+                                    <% } %>
+                            </div>
+
+                            <form method="POST"
+                                action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                                <button class="btn btn-outline-dark btn-sm">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
