@@ -16,7 +16,7 @@ router.route("/login")
         passport.authenticate("local", { failureFlash: true, failureRedirect: "/login" }),
         (req, res, next) => {
             // Clear redirectUrl after successful login
-            const redirectUrl = req.session.redirectUrl || "/";
+            const redirectUrl = req.session.redirectUrl || "/listings";
             delete req.session.redirectUrl;
             console.log("Redirecting to:", redirectUrl);
             res.redirect(redirectUrl);
