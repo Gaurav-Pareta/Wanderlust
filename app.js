@@ -15,6 +15,13 @@ const MongoStore = require('connect-mongo');
 
 
 app.engine('ejs', ejsMate);
+app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, "public")));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const listingRoute = require("./routes/listingRoute.js");
 const reviewRoute = require("./routes/reviewRoute.js");
@@ -23,13 +30,7 @@ const userRoute = require("./routes/userRoute.js");
 const MONGO_URL = process.env.ATLASDB_URL;
 const port = process.env.PORT || 8080;
 
-app.use(methodOverride('_method'));
-app.use(express.static(path.join(__dirname, "public")));
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 // Connect to Mongo
 async function main() {
@@ -87,9 +88,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.get("/", (req, res) => {
-//     res.send("Hi, I am root page");
-// });
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 
 // Routes
 app.use("/listings", listingRoute);
