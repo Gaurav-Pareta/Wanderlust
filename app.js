@@ -112,6 +112,7 @@ app.use((error, req, res, next) => {
 app.use((req, res, next) => {
     if (req.url.startsWith('/css') || req.url.startsWith('/js')) {
         console.log(`Static file requested: ${req.url}`);
+        console.log(`Resolved path: ${path.join(__dirname, 'public', req.url)}`);
     }
     next();
 });
