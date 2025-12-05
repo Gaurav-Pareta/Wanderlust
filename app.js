@@ -132,14 +132,15 @@ app.use((req, res, next) => {
 });
 
 // Explicitly serve static files from the public folder
-app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
-app.use('/js', express.static(path.join(__dirname, 'public', 'js')));
+app.use(express.static('/opt/render/project/src/public'));
 
-// Explicitly serve static files in production
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'public')));
-    console.log('Serving static files from:', path.join(__dirname, 'public'));
-}
+// Log static file requests for debugging
+app.use((req, res, next) => {
+    if (req.url.startsWith('/css') || req.url.startsWith('/js')) {
+        console.log(`Static file requested: ${req.url}`);
+    }
+    next();
+});
 
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
