@@ -116,6 +116,14 @@ app.use((req, res, next) => {
     next();
 });
 
+// Fallback route for static files
+app.use((req, res, next) => {
+    if (req.url.startsWith('/css') || req.url.startsWith('/js')) {
+        console.error(`Static file not found: ${req.url}`);
+    }
+    next();
+});
+
 // Ensure static files are served in production
 app.use((req, res, next) => {
     console.log(`Serving static file: ${req.url}`);
@@ -125,6 +133,12 @@ app.use((req, res, next) => {
 // Explicitly serve static files from the public folder
 app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
 app.use('/js', express.static(path.join(__dirname, 'public', 'js')));
+
+// Explicitly serve static files in production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'public')));
+    console.log('Serving static files from:', path.join(__dirname, 'public'));
+}
 
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
