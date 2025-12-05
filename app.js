@@ -131,10 +131,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Explicitly serve static files using absolute paths
-app.use('/css', express.static('/opt/render/project/src/public/css'));
-app.use('/js', express.static('/opt/render/project/src/public/js'));
-app.use(express.static('/opt/render/project/src/public'));
 
 // Log static file requests for debugging
 app.use((req, res, next) => {
